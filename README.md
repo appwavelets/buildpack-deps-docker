@@ -19,7 +19,7 @@ docker run -it \
   -e GPG_KEY_PASS=... \
   -e AWS_ACCESS_KEY=... \
   -e AWS_SECRET_KEY=... \
-  appwavelets:latest COMMAND
+  appwavelets/rpm-deb-s3:latest COMMAND
 ```
 
 The you can use any command to build, sign or push packages to S3:
