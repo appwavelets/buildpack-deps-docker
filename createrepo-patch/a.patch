@@ -1,0 +1,20 @@
+--- usr/lib/python2.7/dist-packages/createrepo/__init__.py	2014-02-06 15:11:55.000000000 +0000
++++ usr/lib/python2.7/dist-packages/createrepo/__init__.py.new	2018-09-23 19:30:37.810000000 +0000
+@@ -401,17 +401,7 @@
+             self._setup_old_metadata_lookup()
+         # rpms we're going to be dealing with
+         if self.conf.pkglist:
+-            packages = []
+-            for pkg in self.conf.pkglist:
+-                if '://' in pkg: # remote
+-                    packages.append(pkg)
+-                    continue
+-                path = os.path.join(self.conf.basedir, self.conf.directory, pkg)
+-                if os.access(path, os.R_OK):
+-                    packages.append(pkg)
+-                    continue
+-                # not fatal, yet
+-                self.callback.errorlog('Cannot read file: %s' % path)
++            packages = self.conf.pkglist
+         else:
+             packages = self.getFileList(self.package_dir, '.rpm')
