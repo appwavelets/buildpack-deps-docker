@@ -30,6 +30,6 @@ rpm-s3 -r us-east-1 -b BUCKET_NAME -p BUCKET_DIR /path/to/RPM_PACKAGE.rpm
 deb-s3 upload --bucket BUCKET_NAME --prefix BUCKET_DIR --sign KEY_NAME --gpg-options='--batch --passphrase ... --pinentry-mode loopback' -a amd64 -c xenial -p DEBIAN_PACKAGE.deb
 # sign RPM package
 # signing RPM will override the file, so don't mount RPM file
-# to container as file directly, instead mount it as directory
+# to container as file directly, instead mount it in directory
 rpm --addsign /path/to/RPM_PACKAGE.rpm
 ```
