@@ -5,7 +5,7 @@ This docker image contains two packages for pushing RPM and debian packages to S
 * rpm-s3 python script from [crohr/rpm-s3](https://github.com/crohr/rpm-s3)
 * [deb-s3](https://github.com/krobertson/deb-s3)
 
-To push to AWS S3 you need AWS_SECRET_KEY/AWS_ACCESS_KEY pair. IAM roles is not supported.
+To push to AWS S3 you need `AWS_SECRET_KEY/AWS_ACCESS_KEY` pair. IAM roles is not supported.
 
 You can also use GPG keys to sign your packages by passing the key details as environment variables.
 
