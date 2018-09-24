@@ -13,7 +13,6 @@ To use the image:
 ```bash
 docker run -it \
   -v $(pwd)/GPG_KEY.asc:/path/to/GPG_KEY.asc.asc \
-  -v $(pwd)/RPM_PACKAGE.rpm:/path/to/RPM_PACKAGE.rpm \
   -e KEY_PATH=/path/to/GPG_KEY.asc.asc \
   -e GPG_KEY_NAME=KEY_NAME \
   -e GPG_KEY_PASS=... \
@@ -30,7 +29,7 @@ rpm-s3 -r us-east-1 -b BUCKET_NAME -p BUCKET_DIR /path/to/RPM_PACKAGE.rpm
 # push debian to s3
 
 # sign RPM package
-# you need to copy the RPM package to another directory to sign it.
-cp /path/to/RPM_PACKAGE.rpm /new/path/to/RPM_PACKAGE.rpm && \
-rpm --addsign /new/path/to/RPM_PACKAGE.rpm
+# signing RPM will override the file, so don't mount RPM file
+# to container as file directly, instead mount it as directory
+rpm --addsign /path/to/RPM_PACKAGE.rpm
 ```
