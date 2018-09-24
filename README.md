@@ -21,7 +21,7 @@ docker run -it \
   appwavelets/rpm-deb-s3:latest COMMAND
 ```
 
-The you can use any command to build, sign or push packages to S3:
+Then you can use any command to build, sign or push packages to S3:
 
 ```bash
 # push RPM to s3
