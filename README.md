@@ -14,7 +14,7 @@ To use the image:
 docker run -it \
   -v $(pwd)/GPG_KEY.asc:/path/to/GPG_KEY.asc \
   -e GPG_KEY_PATH=/path/to/GPG_KEY.asc \
-  -e GPG_KEY_NAME=KEY_NAME \
+  -e GPG_KEY_ID=KEY_ID \
   -e GPG_KEY_PASS=... \
   -e AWS_ACCESS_KEY=... \
   -e AWS_SECRET_KEY=... \
@@ -29,11 +29,11 @@ rpm-s3 -r us-east-1 -b BUCKET_NAME -p linux/centos/7/x86_64/stable/ /path/to/RPM
 rpm-s3 -r us-east-1 -b BUCKET_NAME -p linux/centos/6/x86_64/test/ /path/to/RPM_PACKAGE.rpm
 # push debian to s3
 deb-s3 upload --bucket BUCKET_NAME --prefix linux/ubuntu \
-    --sign KEY_NAME --gpg-options='--batch --passphrase ... --pinentry-mode loopback' \
+    --sign KEY_ID --gpg-options='--batch --passphrase ... --pinentry-mode loopback' \
     -a amd64 -c xenial -m stable -p DEBIAN_PACKAGE.deb
 
 deb-s3 upload --bucket BUCKET_NAME --prefix linux/debian \
-    --sign KEY_NAME --gpg-options='--batch --passphrase ... --pinentry-mode loopback' \
+    --sign KEY_ID --gpg-options='--batch --passphrase ... --pinentry-mode loopback' \
     -a amd64 -c jessie -m test -p DEBIAN_PACKAGE.deb
 # sign RPM package
 # signing RPM will override the file, so don't mount RPM file

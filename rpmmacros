@@ -1,6 +1,6 @@
 %_signature gpg
 %_gpg_path /root/.gnupg
-%_gpg_name {{ GPG_KEY_NAME }}
+%_gpg_name {{ GPG_KEY_ID }}
 %_gpgbin /usr/bin/gpg
 
 %__gpg_check_password_cmd /bin/true
