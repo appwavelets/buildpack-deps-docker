@@ -12,8 +12,8 @@ You can also use GPG keys to sign your packages by passing the key details as en
 To use the image:
 ```bash
 docker run -it \
-  -v $(pwd)/GPG_KEY.asc:/path/to/GPG_KEY.asc.asc \
-  -e KEY_PATH=/path/to/GPG_KEY.asc.asc \
+  -v $(pwd)/GPG_KEY.asc:/path/to/GPG_KEY.asc \
+  -e GPG_KEY_PATH=/path/to/GPG_KEY.asc \
   -e GPG_KEY_NAME=KEY_NAME \
   -e GPG_KEY_PASS=... \
   -e AWS_ACCESS_KEY=... \
