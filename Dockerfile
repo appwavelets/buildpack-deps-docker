@@ -1,24 +1,21 @@
-FROM debian:stretch-slim
+FROM buildpack-deps:stretch-scm
 ENV HOME /root
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
   python-boto \
-  gnupg \
-  git \
   rubygems \
   rpm \
   yum \
   createrepo \
-  python-pexpect
-
-RUN gem install bundler
+  python-pexpect && \
+  gem install bundler
 
 WORKDIR /opt
 RUN git clone https://github.com/krobertson/deb-s3.git
 
 WORKDIR /opt/deb-s3
 RUN bundle install && \
-    apt-get purge -y --auto-remove rubygems git && \
+    apt-get purge -y --auto-remove rubygems && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /rpm/empty-repo && \
     /usr/bin/createrepo /rpm/empty-repo

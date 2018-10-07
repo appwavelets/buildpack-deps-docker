@@ -1,6 +1,6 @@
 # rpm-deb-s3
 
-This docker image contains two packages for pushing RPM and debian packages to S3 buckets:
+This docker image is built from `buildpack-deps:stretch-scm`(includes a large number of "development header" packages needed by various things like Ruby Gems, PyPI modules, etc.) and contains additionally two packages for pushing RPM and debian packages to S3 buckets:
 
 * rpm-s3 python script from [crohr/rpm-s3](https://github.com/crohr/rpm-s3)
 * [deb-s3](https://github.com/krobertson/deb-s3)
@@ -39,4 +39,6 @@ deb-s3 upload --bucket BUCKET_NAME --prefix linux/debian \
 # signing RPM will override the file, so don't mount RPM file
 # to container as file directly, instead mount it in directory
 rpm --addsign /path/to/RPM_PACKAGE.rpm
+# to sign during build
+rpmbuild --sign ...
 ```
